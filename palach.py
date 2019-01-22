@@ -22,9 +22,9 @@ def scaffold():
     # add the actual scaffold (is that what it's even called?)
     scaff_mat[13,0] = "___"
     scaff_mat[13,1] = "|__"
-    scaff_mat[:, 1] = ["|" for i in 
+    # scaff_mat[:, 1] = ["|" for i in 
     # ^^ that's a bit hacky, not sure if it will work
-    #TODO this is where i was 1/17 4pm
+    #TODO this is where i was 1/17 4pm 
     return scaff_mat
 
 def add2man(num_guesses, man_mat):
