@@ -25,6 +25,7 @@ def scaffold():
     # scaff_mat[:, 1] = ["|" for i in 
     # ^^ that's a bit hacky, not sure if it will work
     #TODO this is where i was 1/17 4pm 
+    print(scaff_mat)
     return scaff_mat
 
 def add2man(num_guesses, man_mat):
@@ -95,10 +96,11 @@ def main():
             wrong_letters.add(guess)
 
             #update hangman
-            continue
+            #continue
 
         num_letters = len(guessed_letters)
         game_print(player_sees)
+        scaffold()
 
 
 
