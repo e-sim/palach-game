@@ -44,10 +44,10 @@ import numpy as np
 
 ''' this prints the game blanks/letters to the screen'''
 def game_print(letters):
-    output = ""
+    otp = ""
     for l in letters:
-        output = "{0} {1}".format(output, l)
-    print(output)
+        otp = "{0} {1}".format(otp, l)
+    print(otp)
 
 
 
@@ -122,7 +122,7 @@ def main():
         num_letters = len(guessed_letters)
         game_print(player_sees)
         #scaffold()
-
+   
 
 
 if __name__ == "__main__":
