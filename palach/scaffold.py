@@ -1,3 +1,4 @@
+import numpy as np
 
 def scaffold():
     #scaff_mat = np.empty((14,9))
@@ -11,6 +12,19 @@ def scaffold():
     # ^^ that's a bit hacky, not sure if it will work
     #TODO this is where i was 1/17 4pm 
     print(scaff_mat)
+
+    #vvv new 5/3
+    # goal: get matrix to print without the damn apostrophes -- IT WORKS
+    # it's a 2d matrix so we have to go through all items in all lists in the 2d list
+    #vvv i is a list
+    for i in scaff_mat:
+        # vvv j is each item within the 'horizontal' list
+        line = ""
+        for j in i:
+            line = line + j
+        print(line + "\n")
+
+
     return scaff_mat
 
 def add2man(num_guesses, man_mat):
@@ -27,3 +41,5 @@ def build_head():
 
 def test_vals(bad_guesses):
     print (bad_guesses)
+
+scaffold()
