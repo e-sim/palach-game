@@ -63,12 +63,13 @@ def main():
         # VV this will need to change once i use the csv file
         wordlist = d.readlines()
     
-    play_word = random.choice(wordlist)
+    play_word = random.choice(wordlist).strip()
     letter_set = set()
     
     for char in play_word:
-        if char is not "\n":
-            letter_set.add(char)        
+            letter_set.add(char)      
+
+    #TODO: either don't allow two-word items or deal with them somehow-- make blank not appear?  
 
     guessed_letters = set()
     wrong_letters = set()
