@@ -15,6 +15,14 @@ def game_print(letters):
         otp = "{0} {1}".format(otp, l)
     print(otp)
 
+def bad_guess_print(guess_set):
+    gss = "guessed: {"
+    for g in guess_set:
+        gss = "{0} {1}".format(gss, g)
+        # ^^^^ this causes an extra space after the "{", will fix later
+    gss = gss + "}"
+    print(gss)
+
 
 
 def main():
@@ -91,8 +99,10 @@ def main():
 
         num_letters = len(guessed_letters)
         game_print(player_sees)
+        bad_guess_print(guessed_letters)
         #scaffold()
-   
+    else:
+        print("you win, ypa")
 
 
 if __name__ == "__main__":

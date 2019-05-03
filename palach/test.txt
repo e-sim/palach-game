@@ -6,7 +6,6 @@ elephant
 frog
 ghost
 hall
-ice cream
 jackalope
 kitten
 little
