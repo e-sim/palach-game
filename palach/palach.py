@@ -5,17 +5,15 @@
 # command: palach.py language level
 # language wordlist files must be named as [languagename].txt
 
-#!/usr/bin/env python3
-
 import sys, random, re, logging
 import numpy as np
 
 ''' this prints the game blanks/letters to the screen'''
 def game_print(letters):
-    output = ""
+    otp = ""
     for l in letters:
-        output = "{0} {1}".format(output, l)
-    print(output)
+        otp = "{0} {1}".format(otp, l)
+    print(otp)
 
 
 
@@ -30,16 +28,21 @@ def main():
     with open(dict_file, "r") as d:
         # VV this will need to change once i use the csv file
         wordlist = d.readlines()
+    
+    play_word = random.choice(wordlist).strip()
+    letter_set = set()
+    
+    for char in play_word:
+            letter_set.add(char)      
 
-    play_word = random.choice(wordlist)
-    letter_set = set(play_word)
-    letter_set.discard("\n")
+    #TODO: either don't allow two-word items or deal with them somehow-- make blank not appear?  
+
     guessed_letters = set()
     wrong_letters = set()
-    print(play_word)
+    print(letter_set)
     # TODO: ideally i'll have either another list or part of the same csv file that 
     # translates all the text for different languages
-    print("новая игра!")
+    print("hi erica!")
     player_sees = ["_" for x in range(len(play_word))]
     game_print(player_sees)
     blanks_left = len(play_word)
@@ -60,12 +63,16 @@ def main():
         if guess in letter_set:
             #cleanup
             guessed_letters.add(guess)
-            blanks_left -= 1
-            letter_set = letter_set.remove(guess)
+
+            # VVV this is a problem because sometimes the letter is doubled!! why did it work before
+            
+            letter_set.discard(guess)
             # add to player_sees in correct place
             indeces = [match.start() for match in re.finditer(guess, play_word)]
             for i in indeces:
                 player_sees[i] = guess
+                blanks_left -= 1     #blanks_left has to decrease here to cover double letter case
+
             #print(player_sees)   <--- i'm just testing turning this off
             # also print wrong guesses, plus the hangman
 
@@ -85,7 +92,7 @@ def main():
         num_letters = len(guessed_letters)
         game_print(player_sees)
         #scaffold()
-
+   
 
 
 if __name__ == "__main__":

@@ -63,7 +63,8 @@ def main():
         # VV this will need to change once i use the csv file
         wordlist = d.readlines()
     
-    play_word = random.choice(wordlist).strip()
+    #play_word = random.choice(wordlist).strip()
+    play_word = "hello"
     letter_set = set()
     
     for char in play_word:
@@ -97,12 +98,16 @@ def main():
         if guess in letter_set:
             #cleanup
             guessed_letters.add(guess)
-            blanks_left -= 1
+            
             letter_set.discard(guess)
             # add to player_sees in correct place
             indeces = [match.start() for match in re.finditer(guess, play_word)]
+            #TODO what if there's two matches??????
+
             for i in indeces:
+                # this adds the guess to the proper place in the player_sees list
                 player_sees[i] = guess
+                blanks_left -= 1
             #print(player_sees)   <--- i'm just testing turning this off
             # also print wrong guesses, plus the hangman
 
