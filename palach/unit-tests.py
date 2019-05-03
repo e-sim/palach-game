@@ -98,7 +98,7 @@ def main():
             #cleanup
             guessed_letters.add(guess)
             blanks_left -= 1
-            letter_set = letter_set.remove(guess)
+            letter_set.discard(guess)
             # add to player_sees in correct place
             indeces = [match.start() for match in re.finditer(guess, play_word)]
             for i in indeces:
