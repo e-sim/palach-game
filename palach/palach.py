@@ -4,6 +4,9 @@
 #
 # command: palach.py language level
 # language wordlist files must be named as [languagename].txt
+
+#!/usr/bin/env python3
+
 import sys, random, re, logging
 import numpy as np
 
@@ -20,7 +23,8 @@ def main():
     logger = logging.getLogger("palach_log")
     logger.setLevel(logging.DEBUG)
 
-    lang = sys.argv[1]
+    #lang = sys.argv[1]
+    lang = "test"  #this is for debuggingpurposes
     dict_file = lang + ".txt"   # later will use .csv
 
     with open(dict_file, "r") as d:
@@ -29,9 +33,10 @@ def main():
 
     play_word = random.choice(wordlist)
     letter_set = set(play_word)
-    guessed_letters = {}
-    wrong_letters = {}
-    # print(play_word)
+    letter_set.discard("\n")
+    guessed_letters = set()
+    wrong_letters = set()
+    print(play_word)
     # TODO: ideally i'll have either another list or part of the same csv file that 
     # translates all the text for different languages
     print("новая игра!")
@@ -61,11 +66,15 @@ def main():
             indeces = [match.start() for match in re.finditer(guess, play_word)]
             for i in indeces:
                 player_sees[i] = guess
-            print(player_sees)
+            #print(player_sees)   <--- i'm just testing turning this off
             # also print wrong guesses, plus the hangman
 
         else:
             print("угадай еще раз")
+
+            # yes i'm testing using print :(
+            #print(guess + "/t" + guessed_letters) <--- won't print set fyi
+            
             # TODO add to wrong guesses & print that
             guessed_letters.add(guess)
             wrong_letters.add(guess)
@@ -75,7 +84,7 @@ def main():
 
         num_letters = len(guessed_letters)
         game_print(player_sees)
-        scaffold()
+        #scaffold()
 
 
 

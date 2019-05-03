@@ -26,4 +26,4 @@ def build_head():
     return
 
 def test_vals(bad_guesses):
-    print bad_guesses
+    print (bad_guesses)
