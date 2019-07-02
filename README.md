@@ -1,7 +1,7 @@
-# palach-game
-#### A hangman \(or "palach"\) game to practice Russian vocabulary.  
+## palach-game
+##### A hangman \(or "palach"\) game to practice Russian vocabulary.  
 
-## Future features:
+### Future features:
 + Levels of difficulty!
 + Hints
 + Other languages \(with a csv file\)
